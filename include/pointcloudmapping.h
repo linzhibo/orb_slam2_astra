@@ -28,6 +28,23 @@
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <condition_variable>
 
+// for clustering
+#include <pcl/filters/extract_indices.h>
+#include <pcl/ModelCoefficients.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl/kdtree/kdtree.h>
+#include <pcl/sample_consensus/method_types.h>
+#include <pcl/sample_consensus/model_types.h>
+#include <pcl/segmentation/sac_segmentation.h>
+#include <pcl/segmentation/extract_clusters.h>
+#include <pcl/segmentation/region_growing.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl/filters/passthrough.h>
+#include <pcl/search/search.h>
+#include <pcl/search/kdtree.h>
+#include <pcl/visualization/cloud_viewer.h>
+
 using namespace ORB_SLAM2;
 
 class PointCloudMapping
@@ -42,6 +59,17 @@ public:
     void insertKeyFrame( KeyFrame* kf, cv::Mat& color, cv::Mat& depth );
     void shutdown();
     void viewer();
+    PointCloud::Ptr ECE(PointCloud::Ptr cloud);
+    PointCloud::Ptr cylinderSeg(PointCloud::Ptr cloud);
+    PointCloud::Ptr regionGrowingSeg(PointCloud::Ptr cloud_in);
+    void PointCloudXYZRGBAtoXYZ(const pcl::PointCloud<pcl::PointXYZRGBA>& in,
+                            pcl::PointCloud<pcl::PointXYZ>& out);
+    void PointXYZRGBAtoXYZ(const pcl::PointXYZRGBA& in,
+                                pcl::PointXYZ& out);
+    void PointXYZRGBtoXYZRGBA(const pcl::PointXYZRGB& in,
+                                pcl::PointXYZRGBA& out);
+    void PointCloudXYZRGBtoXYZRGBA(const pcl::PointCloud<pcl::PointXYZRGB>& in,
+                            pcl::PointCloud<pcl::PointXYZRGBA>& out);
     
 protected:
     PointCloud::Ptr generatePointCloud(KeyFrame* kf, cv::Mat& color, cv::Mat& depth);
