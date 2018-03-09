@@ -42,8 +42,8 @@ endif()
 ############################################################
 ########### IMPORTANT ######################################
 #### openni lib, make sure to set it with your own path#####
-set(OPENNI_INCLUDE_DIR "/home/zhibo/Downloads/OpenNI-Linux-x64-2.3/Include")
-set(OPENNI_LIB_DIR "/home/zhibo/Downloads/OpenNI-Linux-x64-2.3/Redist")
+set(OPENNI_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Thirdparty/OpenNI-Linux-x64-2.3/Include")
+set(OPENNI_LIB_DIR "${PROJECT_SOURCE_DIR}/Thirdparty/OpenNI-Linux-x64-2.3/Redist")
 ############################################################
 ############################################################
 ############################################################
@@ -112,17 +112,17 @@ add_executable(rgbd_astra
 Examples/RGB-D/rgbd_astra.cpp)
 target_link_libraries(rgbd_astra ${PROJECT_NAME})
 
-add_executable(rgbd_xtion_cc
-Examples/RGB-D/rgbd_xtion_cc.cpp)
-target_link_libraries(rgbd_xtion_cc ${PROJECT_NAME})
+#add_executable(rgbd_xtion_cc
+#Examples/RGB-D/rgbd_xtion_cc.cpp)
+#target_link_libraries(rgbd_xtion_cc ${PROJECT_NAME})
 
 add_executable(rgbd_tum 
     Examples/RGB-D/rgbd_tum.cc)
 target_link_libraries(rgbd_tum ${PROJECT_NAME})
 
-add_executable(rgbd_my
-    Examples/RGB-D/rgbd_my.cc)
-target_link_libraries(rgbd_my ${PROJECT_NAME})
+#add_executable(rgbd_my
+#    Examples/RGB-D/rgbd_my.cc)
+#target_link_libraries(rgbd_my ${PROJECT_NAME})
 
 add_executable(stereo_kitti
 Examples/Stereo/stereo_kitti.cc)
