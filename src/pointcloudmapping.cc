@@ -117,8 +117,8 @@ void PointCloudMapping::viewer()
         for ( size_t i=lastKeyframeSize; i<N ; i++ )
         {
             PointCloud::Ptr pre_p = generatePointCloud( keyframes[i], colorImgs[i], depthImgs[i] );
-            PointCloud::Ptr p = cylinderSeg(pre_p);
-            *globalMap += *p;
+            PointCloud::Ptr p = regionGrowingSeg(pre_p);
+            *globalMap = *p;
         }
         PointCloud::Ptr tmp(new PointCloud());
         voxel.setInputCloud( globalMap );
@@ -381,11 +381,11 @@ pcl::PointCloud< PointCloudMapping::PointT >::Ptr PointCloudMapping::regionGrowi
   std::cout << std::endl;
 
   pcl::PointCloud <pcl::PointXYZRGB>::Ptr colored_cloud = reg.getColoredCloud ();
-  pcl::visualization::CloudViewer viewer ("Cluster viewer");
-  viewer.showCloud(colored_cloud);
-  while (!viewer.wasStopped ())
-  {
-  }
+  // pcl::visualization::CloudViewer viewer ("Cluster viewer");
+  // viewer.showCloud(colored_cloud);
+  // while (!viewer.wasStopped ())
+  // {
+  // }
 
   pcl::PointCloud <pcl::PointXYZRGBA>::Ptr cloud_out (new pcl::PointCloud <pcl::PointXYZRGBA>);
   PointCloudXYZRGBtoXYZRGBA(*colored_cloud, *cloud_out);
