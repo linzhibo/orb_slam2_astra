@@ -1,1 +1,0 @@
-/home/zhibo/application/ORBSLAM2_with_pointcloud_map/ORB_SLAM2_modified/Thirdparty/g2o/build/CMakeFiles/g2o.dir
