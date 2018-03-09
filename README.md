@@ -1,7 +1,7 @@
 # Update for unpacked ROB_SLAM with pcl view repo
 
 ## build:
-under CMakeLists.txt set the right path to your own Openni2 folder
+First compile g2o and DBoW in the thirdparty folder. Then compile orb slam.
 
 ```bash
     mkdir build
